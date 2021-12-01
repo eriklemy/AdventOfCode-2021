@@ -22,8 +22,8 @@ int main() {
     } else cout << "unable to open file";
 
 
-    cout << "resultado <PartOne>: " << sonarSweepPartOne(depth) << endl;
-    cout << "resultado <PartTwo>: " << sonarSweepPartTwo(depth) << endl;
+    cout << "result <PartOne>: " << sonarSweepPartOne(depth) << endl;
+    cout << "result <PartTwo>: " << sonarSweepPartTwo(depth) << endl;
 }
 
 int sonarSweepPartOne(vector<int> &depth) {
