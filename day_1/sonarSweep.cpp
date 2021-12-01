@@ -2,11 +2,11 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <stdlib.h>
+#include "../benchmarkingFunction.h"
 
 using namespace std;
-int sonarSweepPartOne(vector<int> &depth);
-int sonarSweepPartTwo(vector<int> &depth);
+void sonarSweepPartOne(vector<int> &depth);
+void sonarSweepPartTwo(vector<int> &depth);
 
 int main() {
     string line;
@@ -17,21 +17,23 @@ int main() {
         depth.push_back(stoi(line));
     myfile.close();
 
-    cout << "result <PartOne>: " << sonarSweepPartOne(depth) << endl;
-    cout << "result <PartTwo>: " << sonarSweepPartTwo(depth) << endl;
+    sonarSweepPartOne(depth);
+    sonarSweepPartTwo(depth);
 }
 
-int sonarSweepPartOne(vector<int> &depth) {
+void sonarSweepPartOne(vector<int> &depth) {
+    benchmarkingFunction time;
     size_t count = 0;
     for(size_t i = 0; i < depth.size() - 1; i++) {
         if(depth[i+1] > depth[i]) {
             count++;
         }
     }
-    return count;
+    cout << "result <PartOne>: " << count  << endl;
 }
 
-int sonarSweepPartTwo(vector<int> &depth) {
+void sonarSweepPartTwo(vector<int> &depth) {
+    benchmarkingFunction time;
     size_t count = 0;
     // size_t auxMax = 0;
     for(size_t i = 0; i < depth.size() - 2; i++) {
@@ -42,5 +44,5 @@ int sonarSweepPartTwo(vector<int> &depth) {
 		}
 		// cout << auxMax << endl;
 	}
-    return count;
+    cout << "result <PartTwo>: " << count << endl;
 }
