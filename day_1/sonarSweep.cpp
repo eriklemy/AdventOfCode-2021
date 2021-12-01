@@ -38,11 +38,11 @@ int sonarSweepPartOne(vector<int> &depth) {
 
 int sonarSweepPartTwo(vector<int> &depth) {
     size_t count = 0;
-    size_t auxMax = 0;
+    // size_t auxMax = 0;
     for(size_t i = 0; i < depth.size() - 2; i++) {
-		auxMax = depth[i] + depth[i+1] + depth[i+2];
+		// auxMax = depth[i] + depth[i+1] + depth[i+2];
 		if((depth[i+1] + depth[i+2] + depth[i+3]) > (depth[i] + depth[i+1] + depth[i+2])) {
-			auxMax = depth[i+1] + depth[i+2] + depth[i+3];
+			// auxMax = depth[i+1] + depth[i+2] + depth[i+3];
 			count++;
 		}
 		// cout << auxMax << endl;
