@@ -11,16 +11,11 @@ int sonarSweepPartTwo(vector<int> &depth);
 int main() {
     string line;
     vector<int> depth;
+    
     ifstream myfile("input.txt");
-    if(myfile.is_open()) {
-        while(!myfile.eof()) {
-            getline(myfile, line);
-            depth.push_back(stoi(line));
-            cout << line << endl;
-        }
-        myfile.close();
-    } else cout << "unable to open file";
-
+    while(getline(myfile, line))
+        depth.push_back(stoi(line));
+    myfile.close();
 
     cout << "result <PartOne>: " << sonarSweepPartOne(depth) << endl;
     cout << "result <PartTwo>: " << sonarSweepPartTwo(depth) << endl;
