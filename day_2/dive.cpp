@@ -3,25 +3,25 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#include <array>
+#include "../benchmarkingFunction.h"
+
 using namespace std;
 
 void divePartOne(vector<string> &commands, vector<int> &movements);
 void divePartTwo(vector<string> &commands, vector<int> &movements);
 
 int main() {
-    string line;
+    int movement;
+    string line, command;
     vector<string> commands;
     vector<int> movements;
-    string command;
-    int movement;
 
     ifstream myfile("input.txt");
     while(getline(myfile, line)) {
         stringstream ss(line);
         getline(ss, command, ' ');
         ss >> movement;
-        // cout << command << ": " << movement << endl;
+
         commands.push_back(command);
         movements.push_back(movement);
     }
@@ -30,6 +30,8 @@ int main() {
 }
 
 void divePartOne(vector<string> &commands, vector<int> &movements) {
+    // benchmarkingFunction time;
+
     int horizontal, vertical;
     horizontal = vertical = 0;
     for(size_t i = 0; i < commands.size(); i++) {
@@ -39,14 +41,14 @@ void divePartOne(vector<string> &commands, vector<int> &movements) {
         else if(commands[i] == "down") {
             vertical += movements[i];
         }
-        else {
-            vertical -= movements[i];
-        }
+        else vertical -= movements[i];
     }
-    cout << horizontal * vertical << endl;
+    cout << "result <PartOne>: " << horizontal * vertical << endl;
 }
 
 void divePartTwo(vector<string> &commands, vector<int> &movements) {
+    // benchmarkingFunction time;
+
     int horizontal, aim, depth;
     horizontal = aim = depth = 0;
     for(size_t i = 0; i < commands.size(); i++) {
@@ -57,9 +59,7 @@ void divePartTwo(vector<string> &commands, vector<int> &movements) {
         else if(commands[i] == "down") {
             aim += movements[i];
         }
-        else {
-            aim -= movements[i];
-        }
+        else aim -= movements[i];
     }
-    cout << horizontal * depth << endl;
+    cout << "result <PartTwo>: " << horizontal * depth << endl;
 }
