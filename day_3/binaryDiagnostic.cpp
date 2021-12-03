@@ -9,7 +9,7 @@ using namespace std;
 string gamma(vector<int> &result, vector<string> &power);
 string epsilon(vector<int> &result, vector<string> &power);
 vector<int> binaryDiagnosticPartOne(vector<string> &power);
-vector<string> binaryDiagnosticPartTwo(vector<string> &power, string type);
+vector<string> binaryDiagnosticPartTwo(vector<string> &power, const string &type);
 
 int main() {
     // benchmarkingFunction time;
@@ -30,7 +30,7 @@ int main() {
     cout << "result <PartTwo>: " << (O2 * CO2) << endl;
 }
 
-vector<string> binaryDiagnosticPartTwo(vector<string> &power, string type) {
+vector<string> binaryDiagnosticPartTwo(vector<string> &power, const string &type) {
     char filter; 
     int currentPos = 0;
     vector<string> currentResult = power;
