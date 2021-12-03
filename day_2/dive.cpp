@@ -30,7 +30,7 @@ int main() {
 }
 
 void divePartOne(vector<string> &commands, vector<int> &movements) {
-    // benchmarkingFunction time;
+    // benchmarkingFunction timer;
 
     int horizontal, vertical;
     horizontal = vertical = 0;
@@ -47,7 +47,7 @@ void divePartOne(vector<string> &commands, vector<int> &movements) {
 }
 
 void divePartTwo(vector<string> &commands, vector<int> &movements) {
-    // benchmarkingFunction time;
+    // benchmarkingFunction timer;
 
     int horizontal, aim, depth;
     horizontal = aim = depth = 0;
