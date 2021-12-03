@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include "../benchmarkingFunction.h"
 
 using namespace std;
 string gamma(vector<int> &result, vector<string> &power);
@@ -11,6 +12,7 @@ vector<int> binaryDiagnosticPartOne(vector<string> &power);
 vector<string> binaryDiagnosticPartTwo(vector<string> &power, string type);
 
 int main() {
+    benchmarkingFunction time;
     string line;
     vector<string> power;
     
