@@ -4,20 +4,18 @@ def parseFile() -> tuple:
         boards = []
         while file.readline():
             board = []
-            for i in range(5):
+            for _ in range(5):
                 board.extend([int(x) for x in file.readline().strip('\n').split()])
             boards.append(board)
     return sortedNumbers, boards
 
 def checkWin(board: list) -> bool:
-    linePos = colPos = 0
-    for i in range(5):
-        lineWon = (board[linePos] == board[linePos + 1] == board[linePos + 2] == board[linePos + 3] == board[linePos + 4])
-        colWon = (board[colPos] == board[colPos + 5] == board[colPos + 10] == board[colPos + 15] == board[colPos + 20])
+    LINESPACE = 5        
+    for pos in range(5): 
+        lineWon = (board[pos * LINESPACE] == board[pos * LINESPACE + 1] == board[pos * LINESPACE + 2] == board[pos * LINESPACE + 3] == board[pos * LINESPACE + 4])
+        colWon = (board[pos] == board[pos + 5] == board[pos + 10] == board[pos + 15] == board[pos + 20])
         if lineWon or colWon:
             return True
-        linePos += 5
-        colPos += 1
     return False
 
 def repeatedCode(sortedNumbers: list, boards: list) -> tuple:
@@ -62,6 +60,5 @@ def main() -> None:
     count, number = giantSquidPartTwo(sortedNumbers, boards)
     total = sum([x for x in boards[count] if x != 1])
     print("result <PartTwo>: ", total * number)
-
 if __name__ == "__main__":
     main()
