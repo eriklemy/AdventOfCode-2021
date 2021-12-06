@@ -33,8 +33,8 @@ def giantSquidPartOne(sortedNumbers: list, boards: list) -> None:
         for board in boards:
             if checkWin(board):
                 total = sum([x for x in board if x != 1])
-                print("Result <PartOne>: ", total * number)
                 found = True
+                print("Result <PartOne>: ", total * number)
 
 def giantSquidPartTwo(sortedNumbers: list, boards: list) -> tuple:
     found = False
