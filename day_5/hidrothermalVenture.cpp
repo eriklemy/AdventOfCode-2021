@@ -47,23 +47,19 @@ int main () {
 
 			if(y < y2 && x < x2) {
 				for (size_t i = y; i <= y2 ; i++) {
-					++table[x][i];
-					x++;
+					++table[x++][i];
 				}
 			} else if(y < y2 && x > x2) {
 				for(size_t i = y; i <= y2; i++) {
-					++table[x][i];
-					x--;
+					++table[x--][i];
 				}
 			} else if(y > y2 && x < x2) {
 				for(size_t i = y; i >= y2; i--) {
-					++table[x][i];
-					x++;
+					++table[x++][i];
 				}
-			} else if(y > y2 && x > x2) {
+			} else {
 				for(size_t i = y; i >= y2 ; i--) {
-					++table[x][i];
-					x--;
+					++table[x--][i];
 				}
 			}
 		}
