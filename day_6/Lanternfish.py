@@ -30,7 +30,10 @@ def main() -> None:
     print("Result <PartTwo>: ", solvePartOneTwo(256))
 
 def partOneBadSolution(days: int) -> int:
-    ''' That shit works and it's possible to visualize the generations, but it's still SLOW {AF} '''
+    ''' 
+        That shit works and it's possible to visualize the generations, but it's still SLOW {AF} 
+        DO NOT USE DAYS > 100
+    '''
     for _ in range(1, days):
         for line in state:
             states = []
@@ -45,7 +48,3 @@ def partOneBadSolution(days: int) -> int:
 
 if __name__ == "__main__":
     main()
-    
-
-"""
-"""
