@@ -20,12 +20,11 @@ def checkWin(board: list) -> bool:
 
 def repeatedCode(sortedNumbers: list, boards: list) -> tuple:
     number = sortedNumbers[0]
-    sortedNumbers = sortedNumbers[1:]
     for board in boards:
         for i in range(len(board)):
             if board[i] == number:
                 board[i] = True
-    return sortedNumbers, number
+    return sortedNumbers[1:], number
 
 def giantSquidPartOne(sortedNumbers: list, boards: list) -> None:
     found = False
