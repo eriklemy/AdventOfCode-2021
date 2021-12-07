@@ -2,10 +2,9 @@
 #include <sstream>
 #include <fstream>
 #include <vector>
-#include <numeric>
 #include <algorithm>
 
-uint64_t solverPartOneTwo(std::vector<int>& data, bool cst);
+uint32_t solverPartOneTwo(std::vector<int>& data, bool cst);
 std::vector<int> parseCommaSeparedFileNumbers();
 
 int main() {
@@ -15,16 +14,16 @@ int main() {
     std::cout << "Result <PartTwo>: " << solverPartOneTwo(data, false) << std::endl;
 }
 
-uint64_t solverPartOneTwo(std::vector<int>& data, bool cst) {
-    uint64_t minFuel = 1e9;
-    size_t max = *std::max_element(data.begin(), data.end());
-    std::cout << max << "\n";
-    for(size_t num = 0; num < max; num++) {
-        size_t fuel = 0;
+uint32_t solverPartOneTwo(std::vector<int>& data, bool cst) {
+    auto minFuel = 1e9;
+    auto max = *std::max_element(data.begin(), data.end());
+    for(auto num = 0; num < max; num++) {
+        auto fuel = 0;
         for(auto value:data) {
-            size_t dist = abs(num - value);
-            if(cst) fuel += dist;
-            else fuel += ((dist * (dist + 1)) * 0.5);
+            auto dist = abs(num - value);
+            fuel += cst ? dist:((dist * (dist + 1)) * 0.5); // [n * (n - 1)] / 2
+            // if(cst) fuel += dist;
+            // else fuel += ((dist * (dist + 1)) * 0.5);
         }
         if(fuel < minFuel) 
             minFuel = fuel;
