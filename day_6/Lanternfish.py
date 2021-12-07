@@ -9,19 +9,19 @@ state.append([value -1 for value in initialState])
 def solvePartOneTwo(days: int) -> int:
     ''' Works for both parts and it's better '''
     lanternfish =  Counter(initialState) # can use a defaultdict and sum values from initialState
-    for _ in range(days):
-        new_fish = lanternfish[0]
-        lanternfish[0] = lanternfish[1]
-        lanternfish[1] = lanternfish[2]
-        lanternfish[2] = lanternfish[3]
-        lanternfish[3] = lanternfish[4]
-        lanternfish[4] = lanternfish[5]
-        lanternfish[5] = lanternfish[6]
-        lanternfish[6] = lanternfish[7]
-        lanternfish[7] = lanternfish[8]
-        lanternfish[6] += new_fish
-        lanternfish[8] = new_fish
-
+    for day in range(days):
+        lanternfish[(day + 7) % 9] += lanternfish[day % 9] # idea from a guy in megathread
+        # new_fish = lanternfish[0]
+        # lanternfish[0] = lanternfish[1]
+        # lanternfish[1] = lanternfish[2]
+        # lanternfish[2] = lanternfish[3]
+        # lanternfish[3] = lanternfish[4]
+        # lanternfish[4] = lanternfish[5]
+        # lanternfish[5] = lanternfish[6]
+        # lanternfish[6] = lanternfish[7]
+        # lanternfish[7] = lanternfish[8]
+        # lanternfish[6] += new_fish
+        # lanternfish[8] = new_fish
     return sum(lanternfish.values())
     
 def main() -> None:

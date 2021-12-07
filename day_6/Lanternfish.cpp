@@ -21,20 +21,10 @@ uint64_t solvePartOneTwo(std::vector<int>& initialState, int days) {
 
     for(auto i: initialState)
         ++lanternfish[i];
-    
-    for(size_t day = 0; day < days; day++) {
-        size_t new_fish = lanternfish[0];
-        lanternfish[0] = lanternfish[1];
-        lanternfish[1] = lanternfish[2];
-        lanternfish[2] = lanternfish[3];
-        lanternfish[3] = lanternfish[4];
-        lanternfish[4] = lanternfish[5];
-        lanternfish[5] = lanternfish[6];
-        lanternfish[6] = lanternfish[7];
-        lanternfish[7] = lanternfish[8];
-        lanternfish[6] += new_fish;
-        lanternfish[8] = new_fish;
-    }
+
+    for(size_t day = 0; day < days; day++) 
+        lanternfish[(day + 7) % 9] += lanternfish[day % 9];
+
     return std::accumulate(lanternfish.begin(), lanternfish.end(), 0ll); 
 }
 
