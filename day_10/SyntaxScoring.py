@@ -5,32 +5,31 @@ SYNTAXCLOSE = {')': 3, ']': 57, '}': 1197, '>': 25137}
 def points(value: str) -> int:
     return SYNTAXCLOSE[value]
     
-def checkSyntaxPartOneTwo(data: list) -> int:
-    count = 0
+def checkSyntaxPartOneTwo(data: list) -> tuple:
+    errorScore = 0
     autocomplete = []
     for line in data:
-        stack = []
-        corrupted = False
+        stack, corrupted = [], False
         for value in line:
             if value in SYNTAXCHECK:
                 stack.append(value)
             else:
                 if value not in SYNTAXCHECK:
-                    top = stack[-1]
-                    stack.pop()
+                    top = stack.pop() # top = stack[-1] also works
                     if SYNTAXCHECK[top] != value:
-                        count += points(value)
+                        errorScore += points(value)
                         corrupted = True
                         break
         if not corrupted:  
-            errorsCount = 0
+            errorsScore = 0
             while stack:
-                errorsCount = errorsCount * 5 + SYNTAXOPEN[stack.pop()]
-            autocomplete.append(errorsCount)
+                errorsScore *= 5
+                errorsScore += SYNTAXOPEN[stack.pop()]
+            autocomplete.append(errorsScore)
 
     autocomplete.sort()
-    autocompleteScore = autocomplete[len(autocomplete)//2]
-    return count, autocompleteScore
+    middleScore = autocomplete[len(autocomplete)//2]
+    return errorScore, middleScore
 
 def main() -> None:
     with open("day_10/input.txt") as file:
