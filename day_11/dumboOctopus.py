@@ -1,7 +1,7 @@
-def Neighbors(row: int, col: int, data: list) -> tuple:
+def Neighbors(row: int, col: int, data: list) -> list:
     adjacents = []
     for i in range(row - 1, row + 2):
-        for j in range(col - 1, col + 2):    
+        for j in range(col - 1, col + 2):
             if i == row and j == col or i < 0 or i >= len(data) or j < 0 or j >= len(data[0]):
                 continue
             adjacents.append((i, j))
@@ -16,7 +16,7 @@ def flash(i: int, j: int, flashed: dict, data: list):
         if data[x][y] > 9 and (x,y) not in flashed:
             flashed[(x,y)] = True
             flash(x, y, flashed, data)
-        
+
 def partOneTwo(data: list, partOne: bool) -> int:
     numFlashes = step =  0
     while True:
@@ -31,7 +31,7 @@ def partOneTwo(data: list, partOne: bool) -> int:
             for col in range(len(data[0])):
                 if data[row][col] > 9:
                     data[row][col] = 0
-    
+
         step += 1
         numFlashes += len(flashed)
 
