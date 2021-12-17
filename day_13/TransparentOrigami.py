@@ -1,6 +1,6 @@
 def parseValues() -> tuple:
     folds, points =  list(), list()
-    with open("input.txt") as file:
+    with open("day_13/input.txt") as file:
         data = file.read().strip().split('\n')
         for line in data:
             if line.startswith('fold'):
@@ -24,12 +24,11 @@ def showBoard(points: list) -> None:
 
 def foldPaper(points: int, folds: str) -> list:
     for i in range(len(points)):
-        if folds[0] == 'y':
-            if (points[i][1] > folds[1]):
-                points[i] = (points[i][0], points[i][1] - 2 * (points[i][1] - folds[1]))
-        elif folds[0] == 'x':
-            if (points[i][0] > folds[1]):
-                points[i] = (points[i][0] - 2 * (points[i][0] - folds[1]), points[i][1])
+        if (folds[0] == 'y') and (points[i][1] > folds[1]):
+            # points[i] = (points[i][0], points[i][1] - 2 * (points[i][1] - folds[1]))
+            points[i] = (points[i][0], 2 * folds[1] - points[i][1])
+        elif (folds[0] == 'x') and (points[i][0] > folds[1]):
+            points[i] = (2 * folds[1] - points[i][0], points[i][1])
     return list(set(points))
 
 def main() -> None:
